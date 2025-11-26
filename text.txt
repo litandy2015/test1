@@ -1,3 +1,23 @@
 大家好
 打完标签，再提交一次
 主备测试下分支合并，先建立一个分支
+
+先切换到要合并到的master分支
+git switch master
+然后将branch_2分支，合并到当前所在的master分支
+git merge branch_2
+此时可能提示会有冲突
+使用bc去合并
+配置bc
+git config --global merge.tool bc
+bc是随便写的一个名字
+然后设置工具的路径，这里的bc用的是上面设置名字
+git config --global mergetool.bc.path='c:/xxx/xxx/BCompare.exe'
+然后使用工具合并
+git mergetool 冲突文件名
+在左边界面或右边界面右击处相关的提示菜单合并，最后在下面的地方保存
+最后添加，提交
+git add .
+git commit -m "xxxxx"
+此时合并完成，自动切换到最新的提交位置，并且是master分支
+
