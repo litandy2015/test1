@@ -21,3 +21,9 @@ git add .
 git commit -m "xxxxx"
 此时合并完成，自动切换到最新的提交位置，并且是master分支
 
+查看
+git config --global --get merge.tool
+git config --global --get mergetool.bc.path
+
+
+difftool也是类似的配置
