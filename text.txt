@@ -101,3 +101,24 @@ git symbolic-ref --short HEAD
 如果在分离状态下提交了，然后又切走了，那可以通过 git reflog 找到那次提交的id
 
 HEAD~ 代表上次提交， HEAD~2 代表上上次提交，依次类推
+
+
+
+撤销
+自己修改的会放在工作区，git add 的会放到暂存区， git commit 的放提交区
+git reset --soft HEAD~1
+撤销提交区，保留暂存区和工作区，回到上次提交
+
+git reset --mixed HEAD .
+撤销暂存区，这里带了路径，不会移动HEAD，保留工作区（默认选项）
+类似
+git restore --stage .
+
+git reset --hard HEAD 用提交区覆盖暂存区和工作区，但是不影响没有被git跟踪的文件
+
+如果你已经推送到远程了
+就不要用 reset 命令了，他会破坏别人的修改
+应该使用 
+git revert HEAD
+这个也是一次提交，但是跟刚才的提交完全相反，以此抵消上次提交
+但是如果你没有提交到远程，没有必要使用这个命令，用reset更好
